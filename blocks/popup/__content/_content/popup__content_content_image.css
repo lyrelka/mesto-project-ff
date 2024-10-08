@@ -1,9 +1,7 @@
 .popup__content_content_image {
-  max-width: 75vw;
-  max-height: 75vh;
+  max-width: none;
   height: auto;
   width: auto;
-  display: flex;
   background: transparent;
   -webkit-background-size: cover;
   background-size: cover;
