@@ -42,10 +42,6 @@ function createCardElement (cardItem, deleteCard) {
   cardImage.setAttribute('alt', cardItem.name);
   cardTitle.textContent = cardItem.name;
 
-  cardImage.addEventListener('click', function() {
-    openImagePopup(cardItem);
-  });
-
   likeButton.addEventListener('click', function(){
     likeButton.classList.toggle('card__like-button_is-active');
   });  
