@@ -1,12 +1,10 @@
-const modals = document.querySelectorAll('.popup');
-
 function openModal(openElement) { 
   document.addEventListener('keydown', closeModalEsc); //захват клавиатуры
   openElement.classList.add('popup_is-opened');
 }
 
-function closeModal(){  
-  popupElement.classList.remove('popup_is-opened');
+function closeModal(closeElement){  
+  closeElement.classList.remove('popup_is-opened');
   document.removeEventListener('keydown', closeModalEsc); //не захватываем клавиатуру
 }
 
@@ -16,4 +14,4 @@ function closeModalEsc(evt) {
   } 
 } 
 
-export {modals, openModal, openImageModal, closeModal};
+export {openModal, closeModal};
