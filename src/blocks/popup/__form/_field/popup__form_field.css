@@ -1,0 +1,10 @@
+.popup__form_field {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0 0;
+  margin-bottom: 10px;
+}
+
+.popup__form_field:last-of-type {
+  margin-bottom: 0;
+}
