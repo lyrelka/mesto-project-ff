@@ -100,6 +100,7 @@ function profileFormSubmit (evt) {
     profileName.textContent = info.name; 
     profileDescription.textContent = info.about;
     closeModal(editProfileModal);
+    editProfileModal.querySelector('.popup__button').textContent = 'Сохранить';
   });
 } 
 
@@ -118,6 +119,7 @@ function avatarFormSubmit (evt) {
   editUserAvatar (avatarInput.value).then((info) => {
     profileAvatar.style.backgroundImage = `url(${info.avatar})`;
     closeModal(editAvatarModal);
+    editAvatarModal.querySelector('.popup__button').textContent = 'Сохранить';
   });
 } 
 
@@ -162,6 +164,7 @@ function cardFormSubmit (evt) {
     
     placeNameInput.value = '';
     placeLinkInput.value = '';
+    addCardModal.querySelector('.popup__button').textContent = 'Сохранить';
   });
 } 
 

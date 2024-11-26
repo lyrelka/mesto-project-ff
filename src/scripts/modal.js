@@ -20,7 +20,6 @@ function openImageModal (openElement) {
 function closeModal (closeElement) {  
   closeElement.classList.remove('popup_is-opened');
   document.removeEventListener('keydown', closeModalEsc); //не захватываем клавиатуру
-  closeElement.querySelector('.popup__button').textContent = 'Сохранить';
 }
 
 function closeModalEsc (evt) { 

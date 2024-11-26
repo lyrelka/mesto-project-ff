@@ -8,9 +8,9 @@ function deleteCardElement (deleteButton, id, deleteCardServer) {
 function likeCardElement (likeButton, id, counter, likeFunction) {
   function likeRequest (id) {
     if (likeButton.classList.contains('card__like-button_is-active')) {
-      return likeFunction.deleteLike(id);
+      return likeFunction.deleteLikeServer(id);
     } else {
-      return likeFunction.putLike(id);
+      return likeFunction.putLikeServer(id);
     }
   }
 
@@ -51,7 +51,7 @@ function createCardElement (card, myId, cardFunction, likeFunction) {
   }); 
 
   cardImage.addEventListener('click', () => {
-    cardFunction.openImageModal(card);
+    cardFunction.openImageElement(card);
   });
 
   return cardElement;
