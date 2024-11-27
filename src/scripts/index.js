@@ -150,7 +150,7 @@ function cardFormSubmit (evt) {
   Promise.all([addNewCard(placeNameInput.value, placeLinkInput.value), getUserInfo()]).then((res) => {
     cardList.prepend(createCardElement(
       res[0], 
-      res[1], {
+      res[1]._id, {
         likeCardElement, 
         deleteCardElement, 
         deleteCardServer,
