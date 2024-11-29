@@ -1,18 +1,4 @@
-function openModal (openElement, clearValidation) { 
-  clearValidation(openElement, {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-  });
-
-  document.addEventListener('keydown', closeModalEsc); //захват клавиатуры
-  openElement.classList.add('popup_is-opened');
-}
-
-function openImageModal (openElement) {
+function openModal (openElement, clearValidation) {
   document.addEventListener('keydown', closeModalEsc); //захват клавиатуры
   openElement.classList.add('popup_is-opened');
 }
@@ -28,4 +14,4 @@ function closeModalEsc (evt) {
   } 
 } 
 
-export {openModal, openImageModal, closeModal};
+export {openModal, closeModal};

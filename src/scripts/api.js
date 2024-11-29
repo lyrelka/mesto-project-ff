@@ -14,104 +14,33 @@ function handleResponse (res) {
   return Promise.reject(`Ошибка: ${res.status}`);
 }
 
-function getInitialCards () {
-  return fetch(`${config.baseUrl}/cards`, {
-    headers: config.headers
-  })
-  .then(handleResponse) 
-  .catch((err) => {
-    console.log(err); 
-  });
-}
-
-function getUserInfo () {
-  return fetch(`${config.baseUrl}/users/me`, {
-    headers: config.headers
-  })
-  .then(handleResponse) 
-  .catch((err) => {
-    console.log(err); 
-  });
-}
-
-function editUserInfo (name, description) {
-  return fetch(`${config.baseUrl}/users/me`, {
-    method: 'PATCH',
+function getTemplate (urn) {
+  return fetch(`${config.baseUrl}/${urn}`, {
     headers: config.headers,
-    body: JSON.stringify({
-      name: name,
-      about: description
-    })
-  })
-  .then(handleResponse) 
-  .catch((err) => {
-    console.log(err); 
-  });
+    }).then(handleResponse)
 }
 
-function editUserAvatar (avatar) {
-  return fetch(`${config.baseUrl}/users/me/avatar`, {
-    method: 'PATCH',
+function postTemplate (urn, method, body) {
+  return fetch(`${config.baseUrl}/${urn}`, {
+    method: method,
     headers: config.headers,
-    body: JSON.stringify({
-      avatar: avatar
-    })
-  })
-  .then(handleResponse)
-  .catch((err) => {
-    console.log(err); 
-  });
+    body: JSON.stringify(body)
+    }).then(handleResponse)
 }
 
-function addNewCard (placeName, placeLink) {
-  return fetch(`${config.baseUrl}/cards`, {
-    method: 'POST',
+function putTemplate (urn, id, method) {
+  return fetch(`${config.baseUrl}/${urn}/${id}`, {
+    method: method,
     headers: config.headers,
-    body: JSON.stringify({
-      name: placeName,
-      link: placeLink
-    })
-  })
-  .then(handleResponse) 
-  .catch((err) => {
-    console.log(err); 
-  });
+    }).then(handleResponse)
 }
 
-function putLikeServer (cardId) {
-  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
-    method: 'PUT',
-    headers: config.headers
-  })
-  .then(handleResponse) 
-  .catch((err) => {
-    console.log(err); 
-  });
-}
+const request = {
+  get: getTemplate, 
+  create: (urn, body) => postTemplate(urn, 'POST', body), 
+  update: (urn, body) => postTemplate(urn, 'PATCH', body),
+  add: (urn, id) => putTemplate (urn, id, 'PUT'),
+  delete:  (urn, id) => putTemplate (urn, id, 'DELETE')
+};
 
-function deleteLikeServer (cardId) {
-  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
-    method: 'DELETE',
-    headers: config.headers
-  })
-  .then(handleResponse) 
-  .catch((err) => {
-    console.log(err); 
-  });
-}
-
-function deleteCardServer (cardId) {
-  return fetch(`${config.baseUrl}/cards/${cardId}`, {
-    method: 'DELETE',
-    headers: config.headers
-  })
-  .then(handleResponse) 
-  .catch((err) => {
-    console.log(err); 
-  });
-}
-
-export {
-  getInitialCards, getUserInfo, editUserInfo, editUserAvatar, 
-  addNewCard, putLikeServer, deleteLikeServer, deleteCardServer
-}; 
+export {request}; 
