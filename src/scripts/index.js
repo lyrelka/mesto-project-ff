@@ -53,21 +53,17 @@ editProfileButton.addEventListener('click', () =>{
   descriptionInput.value = profileDescription.textContent;
   
   clearValidation(profileForm, validationConfig);
-  openModal(editProfileModal, clearValidation);
+  openModal(editProfileModal);
 }); 
 
 profileAvatar.addEventListener('click', () =>{
-  avatarForm.reset();
-  
   clearValidation(avatarForm, validationConfig);
-  openModal(editAvatarModal, clearValidation);
+  openModal(editAvatarModal);
 }); 
  
-addCardButton.addEventListener('click', () =>{ 
-  profileForm.reset();
-
+addCardButton.addEventListener('click', () =>{
   clearValidation(placeForm, validationConfig);
-  openModal(addCardModal, clearValidation); 
+  openModal(addCardModal); 
 }); 
 
 function openCardElement (image) { 
@@ -135,7 +131,6 @@ function profileFormSubmit (evt) {
       profileName.textContent = info.name; 
       profileDescription.textContent = info.about;
       closeModal(editProfileModal);
-      editProfileModal.querySelector('.popup__button').textContent = 'Сохранить';
     })
   }
 
@@ -152,7 +147,6 @@ function avatarFormSubmit (evt) {
     }).then((info) => {
       profileAvatar.style.backgroundImage = `url(${info.avatar})`;
       closeModal(editAvatarModal);
-      editAvatarModal.querySelector('.popup__button').textContent = 'Сохранить';
     })
   }
 
@@ -192,12 +186,8 @@ function cardFormSubmit (evt) {
       link: placeLinkInput.value
     }).then((card) => {
       renderCard(card, 'prepend');
-      
+
       closeModal(addCardModal);
-      
-      placeForm.reset();
-  
-      addCardModal.querySelector('.popup__button').textContent = 'Сохранить';
     })
   }
 

@@ -2,7 +2,7 @@ const cardTemplate = document.querySelector('#card-template').content;
 
 function deleteCardElement (deleteButton, id, request) {
   request('cards', id)
-  .then(deleteButton.closest(".card").remove())
+  .then(() => deleteButton.closest(".card").remove())
   .catch((err) => {
     console.log(err);
   });

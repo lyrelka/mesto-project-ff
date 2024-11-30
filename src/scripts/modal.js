@@ -1,4 +1,4 @@
-function openModal (openElement, clearValidation) {
+function openModal (openElement) {
   document.addEventListener('keydown', closeModalEsc); //захват клавиатуры
   openElement.classList.add('popup_is-opened');
 }
